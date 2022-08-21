@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content%}
+
+
+<h1>Post</h1>
+
+<ul>
+{% for Post in object_list %}
+    <li><a href="{% url 'detail_notice' Post.pk%}"> {{ Post.titulo }} </a>{{ Post.categoria }} <br> {{ Post.autor.first_name }} {{ Post.autor.last_name }} - {{ Post.fecha_publicacion }}
+     
+    
+        <small> <a href="{% url 'Update_Notice' Post.pk%}"> Actualizar </a></small> 
+
+        <small><strong><a href="{% url 'Delete_Notice' Post.pk%}">Delete</a></strong></small> <br> <br>
+{% endfor %}
+</ul>
+
+{% endblock%}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content%}
+
+{% if user.is_authenticated %}
+    <h1>Agregar Categorias</h1>
+    <br><br>
+    <div class="form-group">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    
+    <button type="submit" class="btn btn-info">Agregar Categorias</button>
+    </div>
+    </form>
+
+{% else %}
+    <center><strong> No tiene los permisos necesarios para agregar Categorias</center></strong>
+ 
+{% endif %}
+{% endblock%}

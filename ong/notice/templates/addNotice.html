@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content%}
+
+{% if user.is_authenticated %}
+    <h1>Agregar Noticias</h1>
+    <br><br>
+    <div class="form-group">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+        
+        <button type="submit" class="btn btn-info">Subir Noticia</button></form>
+    </div>
+    <script>
+        var name = "{{ user.id }}";
+        document.getElementById("root").value
+        = name;
+    </script>
+
+    
+{% else %}
+    <center><strong> No tiene los permisos necesarios para agregar noticias</center></strong>
+ 
+{% endif %}
+{% endblock%}
