@@ -1,9 +1,9 @@
 from audioop import reverse
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Notice, Categoria
+from .models import Notice, Categoria, Comment
 from django.urls import reverse_lazy
-from .forms import NoticeForm, UpdateForm
+from .forms import NoticeForm, UpdateForm, CommentForm
 
 class HomeNotice(ListView):
     model = Notice
@@ -20,6 +20,8 @@ class CreateNotice(CreateView):
     #fields = '__all__'
     form_class = NoticeForm
 
+
+
 class CreateCategoria(CreateView):
     model = Categoria
     template_name = 'addCategoria.html'
@@ -35,4 +37,11 @@ class UpdateNotice(UpdateView):
 class DeleteNotice(DeleteView):
     model = Notice
     template_name = 'DeleteNotice.html'
+    success_url = reverse_lazy('home')
+
+class CreateComment(CreateView):
+    model = Comment
+    template_name = 'addComentario.html'
+    #form_class = CommentForm
+    fields = '__all__'
     success_url = reverse_lazy('home')

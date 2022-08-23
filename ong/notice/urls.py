@@ -8,4 +8,5 @@ urlpatterns = [
     path('updateNotice/<int:pk>', views.UpdateNotice.as_view(), name='Update_Notice'),
     path('deleteNotice/<int:pk>', views.DeleteNotice.as_view(), name='Delete_Notice'),
     path('addCategoria/', views.CreateCategoria.as_view(), name='add_categoria'),
+    path('notice/<int:pk>/addComment/', views.CreateComment.as_view(), name='add_comment'),
 ]

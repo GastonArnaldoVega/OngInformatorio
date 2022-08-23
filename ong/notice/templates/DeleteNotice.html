@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content%}
 
-{% if user.is_authenticated %}
+{% if user.is_superuser %}
     {% if user.id == object.autor.id%}
         <h1>Borrar Noticias</h1>
         <br><br>

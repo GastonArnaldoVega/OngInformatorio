@@ -1,7 +1,7 @@
 from logging import PlaceHolder
 from random import choices
 from django import forms
-from .models import Notice, Categoria
+from .models import Notice, Categoria, Comment
 
 choices2 = [('Eventos','Eventos'),('Novedades','Novedades'),('Noticias','Noticias')]
  
@@ -36,5 +36,15 @@ class UpdateForm(forms.ModelForm):
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
             #'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
             'autor': forms.Select(attrs={'class': 'form-control'}),
+            'cuerpo': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+class CommentForm(forms.ModelForm):
+        class Meta:
+            model = Comment
+            fields = ('name', 'cuerpo')
+        
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
             'cuerpo': forms.Textarea(attrs={'class': 'form-control'}),
         }

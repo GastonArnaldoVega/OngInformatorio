@@ -5,7 +5,26 @@
 
 
 <small>By: {{object.autor}} </small><br>
-{{object.cuerpo}} -
+{{object.cuerpo|safe }} -
+<br><br>
+<h2>Comentario</h2>
+{% if not object.comentario.all %}
+    No hay comentarios <a href="{% url 'add_comment' object.pk %}">Agregue uno</a>
+{% else %}
+
+<a href="{% url 'add_comment' object.pk %}">Agregar comentario</a>
+<br><br>
+    {% for object in object.comentario.all %}
+        <strong>
+        {{  object.name }}
+        {{ object.date_added }}
+    </strong>
+    <br>
+    <br>
+    {{ object.cuerpo}}
+    {% endfor %}
+{% endif %}
+<br><br>
 
 <br>
 <a href="{% url 'home' %}" class="btn btn-info" >Back</a>

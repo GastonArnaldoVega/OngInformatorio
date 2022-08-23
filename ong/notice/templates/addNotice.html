@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block content%}
 
-{% if user.is_authenticated %}
+{% if user.is_superuser %}
     <h1>Agregar Noticias</h1>
     <br><br>
     <div class="form-group">
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
+            {{ form.media }}
         
         <button type="submit" class="btn btn-info">Subir Noticia</button></form>
     </div>
